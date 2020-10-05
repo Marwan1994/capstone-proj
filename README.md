@@ -13,3 +13,4 @@ sudo apt-get install jenkins
 sudo apt-get install awscli
 install recommended plugins
 install blue ocean plugins 
+install aws credentials plugin
