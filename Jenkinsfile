@@ -29,7 +29,7 @@ pipeline {
               }*/
             stage('Build the Docker image') {
                 steps {
-                    sh 'docker build -t capstone-proj .'
+                    sh 'sudo docker build -t capstone-proj .'
                 }
             }
             /*stage('Push docker image'){
