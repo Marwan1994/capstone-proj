@@ -14,3 +14,7 @@ sudo apt-get install awscli
 install recommended plugins
 install blue ocean plugins 
 install aws credentials plugin
+
+sudo apt-get install tidy
+Re-use Jenkinsfile from project3
+Configure Blue ocean pipeline and AWS-credentials
