@@ -29,14 +29,14 @@ pipeline {
               }*/
             stage('Build the Docker image') {
                 steps {
-                    sh 'sudo docker build -t capstone-proj .'
+                    sh 'docker build -t capstone-proj .'
                 }
             }
             stage('Push docker image'){
                 steps {
                     withDockerRegistry([url: '', credentialsId: 'dockerhub-cred']) {
-                        sh 'sudo docker tag capstone-proj capstone-project-dockerhub/capstone-proj'
-                        sh 'sudo docker push capstone-project-dockerhub/capstone-proj'
+                        sh 'docker tag capstone-proj elnaggar3012/capstone-proj'
+                        sh 'docker push elnaggar3012/capstone-proj'
                     }
                 }
             }
