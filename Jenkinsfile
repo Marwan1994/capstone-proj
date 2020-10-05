@@ -39,5 +39,6 @@ pipeline {
                         sh 'docker push capstone-project-dockerhub/capstone-proj'
                     }
                 }
+            }
     }
 }
