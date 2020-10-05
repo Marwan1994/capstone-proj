@@ -20,13 +20,23 @@ pipeline {
                  aquaMicroscanner imageName: 'alpine:latest', notCompleted: 'exit 1', onDisallowed: 'fail'
               }
          }     */    
-         stage('Upload to AWS') {
+         /*stage('Upload to AWS') {
               steps {
                   withAWS(region:'us-east-2',credentials:'aws') {
                   sh 'echo "Uploading content with AWS creds"'
                       s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'udacity-proj03')
                   }
-              }
-         }
-     }
+              }*/
+            stage('Build the Docker image') {
+                steps {
+                    sh 'docker build -t capstone-proj .'
+                }
+            }
+            /*stage('Push docker image'){
+                steps {
+                    withDockerRegistry([url: '', credentialsId: 'dockerhub-cred']) {
+                        sh 'docker tag capstone-proj elnaggar3012/capstone-proj'
+                        sh 'docker push elnaggar3012/capstone-proj'
+                    }
+                }*/
 }
