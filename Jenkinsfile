@@ -32,12 +32,12 @@ pipeline {
                     sh 'sudo docker build -t capstone-proj .'
                 }
             }
-            /*stage('Push docker image'){
+            stage('Push docker image'){
                 steps {
                     withDockerRegistry([url: '', credentialsId: 'dockerhub-cred']) {
-                        sh 'docker tag capstone-proj elnaggar3012/capstone-proj'
-                        sh 'docker push elnaggar3012/capstone-proj'
+                        sh 'docker tag capstone-proj capstone-project-dockerhub/capstone-proj'
+                        sh 'docker push capstone-project-dockerhub/capstone-proj'
                     }
-                }*/
+                }
     }
 }
