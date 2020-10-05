@@ -39,4 +39,5 @@ pipeline {
                         sh 'docker push elnaggar3012/capstone-proj'
                     }
                 }*/
+    }
 }
