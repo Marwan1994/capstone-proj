@@ -31,7 +31,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: capstone-LB-service
+  name: capstone-lb-service
   labels:
     app: capstone-proj
 spec:
