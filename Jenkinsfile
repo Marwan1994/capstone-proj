@@ -65,10 +65,10 @@ pipeline {
             stage('Check Deployment') {
                 steps {
                     withAWS(credentials: 'aws', region: 'us-east-2') {
-                    //sh 'kubectl get nodes'
+                    sh 'kubectl get nodes'
                     sh 'kubectl get deployment'
-                    //sh 'kubectl get pod -o wide'
-                    //sh 'kubectl get service/capstone-LB-service'
+                    sh 'kubectl get pod'
+                    sh 'kubectl get service/capstone-LB-service'
                     } 
                 }
             }
@@ -76,6 +76,8 @@ pipeline {
                 steps {
                 echo 'purge system'
                 sh 'docker system prune'
+                sh 'aws cloudformation delete-stack --stack-name eksctl-capstone-proj-cluster-nodegroup-capstone-proj-nodes'
+                sh 'eksctl-capstone-proj-cluster-cluster'
              }
             }   
     }
