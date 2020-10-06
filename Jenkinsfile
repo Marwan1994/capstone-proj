@@ -77,7 +77,7 @@ pipeline {
                 echo 'purge system'
                 sh 'docker system prune'
                 sh 'aws cloudformation delete-stack --stack-name eksctl-capstone-proj-cluster-nodegroup-capstone-proj-nodes'
-                sh 'eksctl-capstone-proj-cluster-cluster'
+                sh 'aws cloudformation delete-stack --stack-name eksctl-capstone-proj-cluster-cluster'
              }
             }   
     }
