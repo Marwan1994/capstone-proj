@@ -23,7 +23,7 @@ spec:
       containers:
         - image: elnaggar3012/capstone-proj
           imagePullPolicy: Always
-          name: capstone
+          name: capstone-container
           ports:
             - containerPort: 80
 
@@ -31,7 +31,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: capstone project
+  name: capstone-LB-service
   labels:
     app: capstone-proj
 spec:

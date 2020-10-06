@@ -52,8 +52,31 @@ pipeline {
                 steps {
                     withAWS(credentials: 'aws', region: 'us-east-2') {
                     sh 'aws eks --region us-east-2 update-kubeconfig --name capstone-proj-cluster'
-                } 
-             }
+                 } 
+                }
             }
+            stage('Rollout deployment') {
+                steps {
+                    withAWS(credentials: 'aws', region: 'us-east-2') {
+                    sh 'kubectl apply -f deployment.yml'
+                    } 
+                }
+            }
+            stage('Check Deployment') {
+                steps {
+                    withAWS(credentials: 'aws', region: 'us-east-2') {
+                    //sh 'kubectl get nodes'
+                    sh 'kubectl get deployment'
+                    //sh 'kubectl get pod -o wide'
+                    //sh 'kubectl get service/capstone-LB-service'
+                    } 
+                }
+            }
+            stage('Purge system') {
+                steps {
+                echo 'purge system'
+                sh 'docker system prune'
+             }
+            }   
     }
 }
