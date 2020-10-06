@@ -48,5 +48,12 @@ pipeline {
                     }
                 }
             }
+            stage('Generate kubeconfig') {
+                steps {
+                    withAWS(credentials: 'aws', region: 'us-east-2') {
+                    sh 'aws eks --region us-east-2 update-kubeconfig --name capstone-proj-cluster'
+                } 
+             }
+            }
     }
 }
