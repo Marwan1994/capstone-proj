@@ -27,14 +27,23 @@ jenkins ALL=(ALL) NOPASSWD: ALL
 **to grant access to jenkins user
 configure docker hub credentials
 Push image to docker hub
-https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html#install-eksctl-linux
-install eksctl
+##########################################
+# https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html#install-eksctl-linux
+# install eksctl
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
-install kubectl
+# install kubectl
 sudo curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/darwin/amd64/kubectl
 sudo chmod +x ./kubectl
+# Add user jenkins to group docker
+sudo usermod -aG docker ubuntu
+##########################################
 
+Create Kuberentes cluster
+Generate Kubeconfig file
+Deploy image using rollout strategy (deployment.yml)
+Check deployment
+Purge system
 
 
