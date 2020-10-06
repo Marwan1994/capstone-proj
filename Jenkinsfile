@@ -27,16 +27,24 @@ pipeline {
                       s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'udacity-proj03')
                   }
               }*/
-            stage('Build the Docker image') {
+            stage('Build image') {
                 steps {
                     sh 'docker build -t capstone-proj .'
                 }
             }
-            stage('Push docker image'){
+            stage('Push image to Repo'){
                 steps {
                     withDockerRegistry([url: '', credentialsId: 'dockerhub-cred']) {
                         sh 'docker tag capstone-proj elnaggar3012/capstone-proj'
                         sh 'docker push elnaggar3012/capstone-proj'
+                    }
+                }
+            }
+            stage('Create K8s cluster') {
+                steps {
+                    sh 'echo creating EKS cluster'
+                    withAWS(credentials: 'aws', region: 'us-east-2') {
+                    sh 'eksctl create cluster --name capstone-proj-cluster  --region us-east-2 --nodegroup-name capstone-proj-nodes --nodes 2 --nodes-min 1 --nodes-max 3 --managed'
                     }
                 }
             }

@@ -17,4 +17,24 @@ install aws credentials plugin
 
 sudo apt-get install tidy
 Re-use Jenkinsfile from project3
-Configure Blue ocean pipeline and AWS-credentials
+Configure Blue ocean pipeline 
+Ensure pipeline works
+Configure AWS credentials
+configure docker in Jenkins
+#Note add
+#vi visudo
+jenkins ALL=(ALL) NOPASSWD: ALL 
+**to grant access to jenkins user
+configure docker hub credentials
+Push image to docker hub
+https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html#install-eksctl-linux
+install eksctl
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl version
+install kubectl
+sudo curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/darwin/amd64/kubectl
+sudo chmod +x ./kubectl
+
+
+
